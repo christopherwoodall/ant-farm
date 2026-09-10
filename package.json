@@ -5,7 +5,13 @@
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "check": "node scripts/check-syntax.js",
+    "test": "node scripts/check-syntax.js",
+    "build:win": "electron-packager . \"Ant Farm\" --platform=win32 --arch=x64 --out=dist --overwrite",
+    "build:mac": "electron-packager . \"Ant Farm\" --platform=darwin --arch=x64,arm64 --out=dist --overwrite",
+    "build:linux": "electron-packager . \"Ant Farm\" --platform=linux --arch=x64 --out=dist --overwrite",
+    "build:all": "npm run build:win && npm run build:mac && npm run build:linux"
   },
   "keywords": [
     "ant-farm",
@@ -16,6 +22,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@electron/packager": "^20.3.0",
     "electron": "^44.3.0"
   }
 }

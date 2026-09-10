@@ -81,6 +81,9 @@ async function init() {
       case 'Thirsty':
         statusBadge.classList.add('badge-thirsty');
         break;
+      case 'Depleted':
+        statusBadge.classList.add('badge-depleted');
+        break;
       default:
         statusBadge.classList.add('badge-active');
         break;
@@ -106,8 +109,9 @@ async function init() {
   btnWater.addEventListener('click', (e) => {
     simulation.addWater(5);
     sound.playWaterDrop();
+    const cardRect = card.getBoundingClientRect();
     const rect = btnWater.getBoundingClientRect();
-    showToast('+5 Water', rect.left - 10, rect.top - 15);
+    showToast('+5 Water', (rect.left - cardRect.left) + (rect.width / 2) - 24, (rect.top - cardRect.top) - 18);
     saveColony();
   });
 
@@ -115,8 +119,9 @@ async function init() {
   btnFood.addEventListener('click', (e) => {
     simulation.addFood(5);
     sound.playFoodDrop();
+    const cardRect = card.getBoundingClientRect();
     const rect = btnFood.getBoundingClientRect();
-    showToast('+5 Food', rect.left - 10, rect.top - 15);
+    showToast('+5 Food', (rect.left - cardRect.left) + (rect.width / 2) - 24, (rect.top - cardRect.top) - 18);
     saveColony();
   });
 

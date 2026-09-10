@@ -15,48 +15,53 @@
     </div>
 
     <!-- Left: Underground Ant Farm Viewport -->
-    <div class="viewport-wrapper no-drag" id="viewport-wrapper" title="Click to tap on glass">
+    <div class="viewport-wrapper no-drag" id="viewport-wrapper" title="Click to tap on glass | Scroll to zoom">
       <canvas id="farm-canvas" width="240" height="240"></canvas>
     </div>
 
-    <!-- Center: Colony Stats -->
+    <!-- Center/Right: Colony Info & Actions -->
     <div class="colony-info">
       <div class="colony-header">
         <h2 class="colony-title" id="colony-title">Ant Farm</h2>
         <span class="species-tag" id="species-tag">Lasius niger</span>
       </div>
 
+      <!-- Vertical Stats Column -->
       <div class="stats-group">
-        <div class="stat-row">
+        <div class="stat-row" title="Living worker and queen ant population">
           <span class="stat-icon">🐜</span>
-          <span>Ants:</span>
+          <span class="stat-label">Ants:</span>
           <span class="stat-value" id="stat-ants">27</span>
         </div>
-        <div class="stat-row">
+        <div class="stat-row" title="Colony hydration and subterranean aquifer reserves">
           <span class="stat-icon">💧</span>
-          <span>Water:</span>
+          <span class="stat-label">Water:</span>
           <span class="stat-value" id="stat-water">8</span>
         </div>
-        <div class="stat-row">
+        <div class="stat-row" title="Colony food reserves and stored seeds">
           <span class="stat-icon">🟡</span>
-          <span>Food:</span>
+          <span class="stat-label">Food:</span>
           <span class="stat-value" id="stat-food">12</span>
         </div>
       </div>
 
-      <div id="status-badge" class="colony-badge badge-active">Active</div>
-    </div>
+      <!-- Status under Stats Column -->
+      <div class="status-container">
+        <span class="status-label">Status:</span>
+        <span id="status-badge" class="colony-badge badge-active">Active</span>
+      </div>
 
-    <!-- Right: Quick Actions -->
-    <div class="action-buttons no-drag">
-      <button id="btn-water" class="action-btn btn-water">
-        <span>💧</span>
-        <span>Water</span>
-      </button>
-      <button id="btn-food" class="action-btn btn-food">
-        <span>🌾</span>
-        <span>Food</span>
-      </button>
+      <!-- Quick Action Buttons under Colony Stats (Horizontal) -->
+      <div class="action-buttons no-drag">
+        <button id="btn-water" class="action-btn btn-water" title="Feed Water (+5)">
+          <span class="btn-icon">💧</span>
+          <span class="btn-label">Water</span>
+        </button>
+        <button id="btn-food" class="action-btn btn-food" title="Feed Seeds (+5)">
+          <span class="btn-icon">🌾</span>
+          <span class="btn-label">Food</span>
+        </button>
+      </div>
     </div>
 
     <!-- Corner Resize Handle -->

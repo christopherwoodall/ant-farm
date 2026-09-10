@@ -43,6 +43,11 @@ A native cross-platform desktop ant farm companion and simulation built with Ele
   - Colony health statuses: *Thriving*, *Active*, *Hungry*, *Thirsty*, *Depleted*.
   - Persistent state (`colony.json`) ensures your colony survives across launches.
 
+- **Responsive Layout & Streamlined Controls**:
+  - **Fluid Container-Aware Layout**: Built with CSS Container Queries (`@container`) and flexible layouts so the card adapts smoothly across different window dimensions without clipping or awkward whitespace.
+  - **Integrated Action Buttons Under Stats**: Quick action buttons (**💧 Water** and **🌾 Food**) are positioned side-by-side directly beneath the live colony statistics panel for fast, ergonomic feeding and hydration.
+  - **Dynamic Density Scaling**: In narrower sizes, stat labels cleanly condense to icons + values (`🐜 27 | 💧 8 | 🟡 12`) to preserve clean proportions.
+
 - **Customization & Settings**:
   - **Customizable Ant Population**: Slider to adjust live colony size from 5 up to 80 ants anytime.
   - **Interactive Window Resizing**: Click-and-drag corner handle to resize the frameless window freely to any custom dimension, with a "Reset Size (400 × 180)" shortcut in Settings.
@@ -52,20 +57,74 @@ A native cross-platform desktop ant farm companion and simulation built with Ele
 
 ---
 
-## How to Run
+## Build & Automation
 
-No system-wide packages or administrator privileges were required. All dependencies are stored locally in the project folder.
+Ant Farm includes both a cross-platform **`Makefile`** (for macOS, Linux, and Windows with GNU make) and a native **`build.ps1`** PowerShell script (for Windows).
 
-### Quick Start
-- Double-click **`run.bat`**, or
-- In PowerShell:
-  ```powershell
-  .\run.ps1
-  ```
-- Or via npm:
-  ```bash
-  npm start
-  ```
+> **Note**: Running either `make` or `.\build.ps1` with **no arguments** prints the complete interactive help menu and available targets.
+
+### Using `build.ps1` (Windows PowerShell)
+
+```powershell
+# Display help and usage (default)
+.\build.ps1
+
+# Setup: install dependencies locally into node_modules
+.\build.ps1 setup
+
+# Run: launch desktop companion
+.\build.ps1 run
+
+# Check: validate JavaScript syntax across all source files
+.\build.ps1 check
+
+# Build standalone executables:
+.\build.ps1 build-win      # Standalone Windows x64 app (into dist/)
+.\build.ps1 build-mac      # Standalone macOS app (Universal x64 & arm64)
+.\build.ps1 build-linux    # Standalone Linux x64 app
+.\build.ps1 build-all      # Build for all three OS platforms
+
+# Clean build artifacts:
+.\build.ps1 clean          # Remove dist/
+.\build.ps1 clean-all      # Remove dist/ and node_modules/
+```
+
+### Using `Makefile` (Cross-Platform)
+
+```bash
+# Display help and usage (default)
+make
+
+# Setup: download dependencies into node_modules
+make setup
+
+# Run: launch desktop companion
+make run
+
+# Check: validate JavaScript syntax
+make check
+
+# Build standalone executables:
+make build-win            # Package Windows x64 binary
+make build-mac            # Package macOS Universal binary
+make build-linux          # Package Linux x64 binary
+make build-all            # Package for all OS platforms
+
+# Clean build artifacts:
+make clean                # Remove dist/
+make clean-all            # Remove dist/ and node_modules/
+```
+
+---
+
+## Quick Start (No Build Needed)
+
+No system-wide packages or administrator privileges are required. All dependencies are stored locally in the project folder.
+
+- **Windows Batch**: Double-click **`run.bat`**
+- **PowerShell**: `.\run.ps1` or `.\build.ps1 run`
+- **Make**: `make run`
+- **npm**: `npm start`
 
 ---
 

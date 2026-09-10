@@ -18,11 +18,11 @@ html, body {
 .farm-card {
   width: 100%;
   height: 100%;
-  padding: 14px;
+  padding: clamp(10px, 2.8cqi, 14px);
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
+  gap: clamp(10px, 2.8cqi, 14px);
   background: rgba(18, 22, 32, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -31,6 +31,7 @@ html, body {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  container-type: inline-size;
 }
 
 .farm-card.floating {
@@ -52,6 +53,7 @@ button, canvas, .no-drag {
   flex-shrink: 0;
   height: 100%;
   aspect-ratio: 1 / 1;
+  max-width: 52%;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -93,34 +95,36 @@ button, canvas, .no-drag {
   image-rendering: crisp-edges;
 }
 
-/* Center: Colony Information */
+/* Right: Colony Information & Action Area */
 .colony-info {
   flex: 1;
   min-width: 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 7px;
+  justify-content: space-between;
+  gap: 6px;
 }
 
 .colony-header {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .colony-title {
-  font-size: 16px;
+  font-size: clamp(13px, 3.8cqi, 16px);
   font-weight: 700;
   letter-spacing: -0.2px;
   color: #f8fafc;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .species-tag {
-  font-size: 10.5px;
+  font-size: clamp(9.5px, 2.4cqi, 11px);
   font-weight: 500;
   color: #94a3b8;
   font-style: italic;
@@ -129,17 +133,83 @@ button, canvas, .no-drag {
   text-overflow: ellipsis;
 }
 
+/* Status Container under Stats Column */
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+}
+
+.status-label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* Colony Health Badge */
+.colony-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2.5px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+.badge-thriving {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.badge-active {
+  background: rgba(56, 189, 248, 0.18);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.badge-hungry {
+  background: rgba(234, 179, 8, 0.2);
+  color: #facc15;
+  border: 1px solid rgba(234, 179, 8, 0.35);
+}
+
+.badge-thirsty {
+  background: rgba(244, 63, 94, 0.2);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+
+.badge-depleted {
+  background: rgba(239, 68, 68, 0.22);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+/* Vertical Colony Stats Column */
 .stats-group {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 4px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 6px 10px;
 }
 
 .stat-row {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 13px;
+  font-size: clamp(11.5px, 2.6cqi, 13px);
   font-weight: 500;
   color: #cbd5e1;
 }
@@ -149,6 +219,13 @@ button, canvas, .no-drag {
   width: 16px;
   text-align: center;
   display: inline-block;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .stat-value {
@@ -157,67 +234,49 @@ button, canvas, .no-drag {
   margin-left: 2px;
 }
 
-.colony-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 7px;
-  border-radius: 9999px;
-  font-size: 10px;
-  font-weight: 600;
-  width: fit-content;
-  margin-top: 1px;
-}
-
-.badge-thriving {
-  background: rgba(34, 197, 94, 0.2);
-  color: #4ade80;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-.badge-active {
-  background: rgba(56, 189, 248, 0.18);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.badge-hungry {
-  background: rgba(234, 179, 8, 0.2);
-  color: #facc15;
-  border: 1px solid rgba(234, 179, 8, 0.3);
-}
-
-.badge-thirsty {
-  background: rgba(244, 63, 94, 0.2);
-  color: #fb7185;
-  border: 1px solid rgba(244, 63, 94, 0.3);
-}
-
-/* Right: Action Buttons */
+/* Horizontal Action Buttons Placed Under Vertical Stats */
 .action-buttons {
-  flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 9px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
 
 .action-btn {
+  flex: 1;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  padding: 8px 15px;
+  gap: 6px;
+  padding: clamp(5px, 1.4vh, 7px) clamp(6px, 2cqi, 12px);
   border-radius: 9999px;
-  font-size: 12.5px;
+  font-size: clamp(11.5px, 2.5cqi, 12.5px);
   font-weight: 600;
   cursor: pointer;
   outline: none;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+.action-btn .btn-icon {
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.action-btn .btn-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .action-btn:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
 /* Water Button */
@@ -244,6 +303,93 @@ button, canvas, .no-drag {
   background: #166534;
   border-color: #4ade80;
   box-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+}
+
+/* Responsive: When the screen is too small, button text goes away and leaves only icons */
+@container (max-width: 360px) {
+  .action-btn .btn-label {
+    display: none;
+  }
+  .action-btn {
+    padding: 6px 10px;
+    gap: 0;
+    justify-content: center;
+  }
+  .action-btn .btn-icon {
+    font-size: 15px;
+  }
+  .stats-group {
+    padding: 5px 8px;
+    gap: 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .action-btn .btn-label {
+    display: none;
+  }
+  .action-btn {
+    padding: 6px 10px;
+    gap: 0;
+    justify-content: center;
+  }
+  .action-btn .btn-icon {
+    font-size: 15px;
+  }
+}
+
+@container (max-width: 300px) {
+  .stat-label {
+    display: none;
+  }
+  .stat-row {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 300px) {
+  .stat-label {
+    display: none;
+  }
+  .stat-row {
+    gap: 5px;
+  }
+}
+
+@container (max-width: 275px) {
+  .farm-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .viewport-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    max-width: 100%;
+  }
+  .colony-info {
+    height: auto;
+  }
+}
+
+@media (max-height: 155px) {
+  .farm-card {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+  .colony-info {
+    gap: 3px;
+  }
+  .stats-group {
+    padding: 3px 8px;
+    gap: 2px;
+  }
+  .stat-row {
+    font-size: 11px;
+  }
+  .action-btn {
+    padding: 4px 8px;
+  }
 }
 
 /* Top control buttons (Float / Settings / Close) */
