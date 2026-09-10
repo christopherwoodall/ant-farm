@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ant Farm Settings</title>
+  <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+  <div class="settings-container">
+    <div class="header">
+      <h1>Ant Farm Preferences</h1>
+      <p>Configure species, window behavior, and simulation parameters.</p>
+    </div>
+
+    <!-- Colony Configuration -->
+    <div class="section">
+      <div class="section-title">Colony Configuration</div>
+
+      <div class="form-row">
+        <label for="colony-name-input">Colony Name</label>
+        <input type="text" id="colony-name-input" placeholder="Ant Farm" maxlength="24" style="width: 170px;">
+      </div>
+
+      <div class="form-row">
+        <label for="ant-count-range">Ant Population: <span id="ant-count-val">27</span></label>
+        <input type="range" id="ant-count-range" min="5" max="80" value="27">
+      </div>
+
+      <div class="form-group" style="margin-top: 4px;">
+        <label for="species-select">Species</label>
+        <select id="species-select">
+          <option value="black_garden">Black Garden Ant (Lasius niger)</option>
+          <option value="harvester">Red Harvester Ant (Pogonomyrmex barbatus)</option>
+          <option value="carpenter">Carpenter Ant (Camponotus pennsylvanicus)</option>
+          <option value="honeypot">Honeypot Ant (Myrmecocystus mexicanus)</option>
+        </select>
+      </div>
+
+      <div class="species-preview-box">
+        <div class="species-name" id="preview-species-name">Black Garden Ant</div>
+        <div class="species-desc" id="preview-species-desc">Hardy, resilient generalists. Steady excavators and cooperative foragers.</div>
+        <div class="species-trait" id="preview-species-trait">Special trait: Trophallaxis mastery</div>
+      </div>
+    </div>
+
+    <!-- Window & Display -->
+    <div class="section">
+      <div class="section-title">Window & Display</div>
+
+      <div class="form-row">
+        <label for="window-mode-select">Window Mode</label>
+        <select id="window-mode-select">
+          <option value="docked">Docked (Bottom-Right)</option>
+          <option value="float">Float (Draggable)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="window-scale-select">Widget Size</label>
+        <select id="window-scale-select">
+          <option value="standard">Standard (400 × 180)</option>
+          <option value="compact">Compact (340 × 150)</option>
+          <option value="large">Large (480 × 215)</option>
+          <option value="custom">Custom (Resized)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="opacity-range">Window Opacity: <span id="opacity-val">95%</span></label>
+        <input type="range" id="opacity-range" min="50" max="100" value="95">
+      </div>
+
+      <div class="form-row checkbox-row">
+        <label for="always-on-top-check">Always on Top</label>
+        <input type="checkbox" id="always-on-top-check" checked>
+      </div>
+    </div>
+
+    <!-- Simulation & Sound -->
+    <div class="section">
+      <div class="section-title">Simulation & Sound</div>
+
+      <div class="form-row checkbox-row">
+        <label for="sound-check">Enable Sound Effects</label>
+        <input type="checkbox" id="sound-check" checked>
+      </div>
+
+      <div class="form-row">
+        <label for="speed-select">Simulation Speed</label>
+        <select id="speed-select">
+          <option value="0.5">0.5x (Relaxed)</option>
+          <option value="1.0" selected>1.0x (Standard)</option>
+          <option value="2.0">2.0x (Fast)</option>
+          <option value="5.0">5.0x (Turbo)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="footer-actions">
+      <button id="btn-reset-colony" class="btn-danger">Reset Colony</button>
+      <button id="btn-save" class="btn-primary">Save</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/settings.js"></script>
+</body>
+</html>

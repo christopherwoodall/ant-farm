@@ -1,0 +1,21 @@
+{
+  "name": "ant-farm",
+  "version": "1.0.0",
+  "description": "A native cross-platform ant farm desktop companion and simulation",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev"
+  },
+  "keywords": [
+    "ant-farm",
+    "desktop-pet",
+    "simulation",
+    "tamagotchi"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^44.3.0"
+  }
+}

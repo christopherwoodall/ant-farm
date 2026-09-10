@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ant Farm</title>
+  <link rel="stylesheet" href="css/widget.css">
+</head>
+<body>
+  <div id="farm-card" class="farm-card">
+    <!-- Hover Tool Controls -->
+    <div class="card-tools no-drag">
+      <button id="btn-settings" class="tool-btn" title="Settings">⚙</button>
+      <button id="btn-close" class="tool-btn" title="Hide to Tray">✕</button>
+    </div>
+
+    <!-- Left: Underground Ant Farm Viewport -->
+    <div class="viewport-wrapper no-drag" id="viewport-wrapper" title="Click to tap on glass">
+      <canvas id="farm-canvas" width="240" height="240"></canvas>
+    </div>
+
+    <!-- Center: Colony Stats -->
+    <div class="colony-info">
+      <div class="colony-header">
+        <h2 class="colony-title" id="colony-title">Ant Farm</h2>
+        <span class="species-tag" id="species-tag">Lasius niger</span>
+      </div>
+
+      <div class="stats-group">
+        <div class="stat-row">
+          <span class="stat-icon">🐜</span>
+          <span>Ants:</span>
+          <span class="stat-value" id="stat-ants">27</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon">💧</span>
+          <span>Water:</span>
+          <span class="stat-value" id="stat-water">8</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-icon">🟡</span>
+          <span>Food:</span>
+          <span class="stat-value" id="stat-food">12</span>
+        </div>
+      </div>
+
+      <div id="status-badge" class="colony-badge badge-active">Active</div>
+    </div>
+
+    <!-- Right: Quick Actions -->
+    <div class="action-buttons no-drag">
+      <button id="btn-water" class="action-btn btn-water">
+        <span>💧</span>
+        <span>Water</span>
+      </button>
+      <button id="btn-food" class="action-btn btn-food">
+        <span>🌾</span>
+        <span>Food</span>
+      </button>
+    </div>
+
+    <!-- Corner Resize Handle -->
+    <div class="resize-handle no-drag" id="resize-handle" title="Click and drag to resize">
+      <svg width="10" height="10" viewBox="0 0 10 10">
+        <line x1="8" y1="2" x2="2" y2="8" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="9" y1="5" x2="5" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="9" y1="8" x2="8" y2="9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
